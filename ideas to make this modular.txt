@@ -1,0 +1,36 @@
+how can I make this modular?
+
+pseudo of how the function would be run:
+
+
+bg.color = green
+bg.z_level = 0
+
+element1.color = red
+element.z_level = 1
+
+elemenet2.color = blue
+element.z_level = 2
+
+animation(bg, element1, element2)
+
+-LISTS!!
+
+spritesheet1 = ["1.txt", "2.txt", "3.txt", "4.txt"]
+spritesheet2 = ["1.txt", "2.txt", "3.txt", "4.txt"]
+spritesheet3 = ["1.txt", "2.txt", "3.txt", "4.txt"]
+
+Loop:
+	if cursor_position_spritesheet1[0] exists and nothing in same position of ss2[0] and ss3[0]:
+		print(cursor_position_spritesheet1[0])
+	if something in same position:
+		check_z levels
+		print whatever has the higher zlevel
+	everything is printed according to the color and zlevel
+
+If I manage to pull this off then I could theoretically have as many enemies as I want on the screen.
+	!!! However, for this to work, I should also consider how to move things around on the screen and not be 	constrained by having the original sprites in a given position (LATER)
+
+What about if two different sprite sheets have a different amount of frames? How am I going to handle that? (now that I think of it, the background does have one frame..)
+
+The sprites shouldn't all be the same size, that's pretty cheap. (LATER)
