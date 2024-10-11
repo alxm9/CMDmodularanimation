@@ -31,7 +31,7 @@ def run_animation(*args):
         sprite_dict[ss_obj] = []
         for frame in range(1,ss_obj.frames+1):
             path = os.path.join("{0}".format(ss_obj.path), "txt", "{0}.txt".format(frame)) 
-            file = open(path, "r", encoding="utf-8")
+            file = open("{0}\\{1}.txt".format(ss_obj.path,frame), "r", encoding="utf-8")
             sprite_dict[ss_obj].append(file.read()+"{0}".format(ss_obj.color))
     # print(sprite_dict)
     # print(sprite_dict[(list(sprite_dict)[0])])
