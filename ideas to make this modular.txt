@@ -1,3 +1,4 @@
+10:53 11/10/2024
 how can I make this modular?
 
 pseudo of how the function would be run:
@@ -34,3 +35,26 @@ If I manage to pull this off then I could theoretically have as many enemies as 
 What about if two different sprite sheets have a different amount of frames? How am I going to handle that? (now that I think of it, the background does have one frame..)
 
 The sprites shouldn't all be the same size, that's pretty cheap. (LATER)
+
+06:53 12/10/2024
+
+to do list:
+	-MAKE SURE EVERYTHING IS MODULAR AND NOT HARDCODED 
+	-take zlevels from each object => placed in obj:zlevel dictionaries for the time being
+	-loop through every letter of each frame simoultaneously
+	-conditions on which letter to print
+
+Fuck it, let's try hardcoding it first and see how it goes and if I can convert it to something more modular
+
+9:30 12/10/2024
+AAAAAAAAAAAAAAAAAAAAAAAAARRRRRGH!!!!!!!!!!!!!!!
+
+11:07 12/10/2024
+I need to make a dictionary where the chars are connected to their respective z-levels
+
+12:26 12/10/2024
+Ok so I managed to implement zlevels properly and I can add as many spritesheets as I want.
+It looks hella nice ngl
+
+12:40 12/10/2024
+Code's starting to look like shit. I should consider if I can make use of classes here.

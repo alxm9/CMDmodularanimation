@@ -20,16 +20,18 @@ class spritesheet():
         self.dy = dy
 
 #"""path, escape code color, z-level, frames att for looping purposes
-outline = spritesheet("bg","\033[94m", zlevel = 22, frames = 5)
-circle = spritesheet("circle","\033[31m", zlevel = 6, frames = 5)
-square = spritesheet("square","\033[32m", zlevel = 8, frames = 5)
-# lightning = spritesheet("lightning","\033[32m", zlevel = 5, frames = 5)
+outline = spritesheet("bg","\033[94m", zlevel = 5, frames = 5)
+circle = spritesheet("circle","\033[31m", zlevel = 1, frames = 5)
+square = spritesheet("square","\033[32m", zlevel = 2, frames = 5)
 
 def get_zlevels(argstuple):
     z_dict = {}
     for ss_obj in argstuple:
         z_dict[ss_obj] = ss_obj.zlevel
         z_greatest = next(iter(z_dict))
+    # for key in z_dict: # pointless?
+        # if z_dict[key] > z_dict[z_greatest]:
+            # z_greatest = key
     return z_dict
 
 def tuple_into_list(argstuple):
@@ -61,17 +63,30 @@ def run_animation(*args): #First arg should be edge/bg
     sprite_dict = obj_frameslist_dict(args) # {ss_obj: [frame1, frame2,..],...}
     z_dict = get_zlevels(args) # {ss_obj: zlevel,...}
     locations = grab_sprite_dict(argslist, sprite_dict) ## to be used with zip()
-    base = sprite_dict[argslist[0]] # dude wtf was I going to do with this
+    base = sprite_dict[argslist[0]] #First arg should be edge/bg, however this seems hardcoded. To delete?
+    # for i in base: ### for char in frame
+        # print("{0}".format(i), end="")        
+    # print(len(locations))
     for objs in zip(*locations): # * unpacks locations list into n different lists (objs)
+        # print("objs len", len(objs), type(objs))
         for chars in zip(*objs): # objs unpacked into n different characters
+            # input()
+            # print("char len", len(chars), type(chars))
+            # input()
             char_zlevel = {}
-            compare = []
-            color = " "
             if all(" " in t for t in chars): # if all 3 chars are " " 
                 print(" ", end="")
                 continue
             for i in range(len(chars)):
+                # print(i)
+                # print(char_zlevel[chars[i]], "=", z_dict[argslist[i]])
+                # if chars[i] == " ":
+                    # continue 
                 char_zlevel[chars[i]] = z_dict[argslist[i]]
+            # print(char_zlevel)
+            # print("len charzlevel", len(char_zlevel))
+            # to_print=chars[0]
+            compare = []
             for i in chars:
                 if i != " ":
                     compare.append(i)
@@ -79,31 +94,13 @@ def run_animation(*args): #First arg should be edge/bg
             for i in compare:
                 if char_zlevel[i] > char_zlevel[to_print]:
                     to_print = i
+            # for i in chars:
+                # if char_zlevel[i] > char_zlevel[to_print]:
+                    # if i != " ":
+                        # to_print = i
             print(to_print, end="")
         print("\033[34A\033[2K", end="")
-        time.sleep(0.5)
-
-    #THIS WORKS
-    # for objs in zip(*locations): # * unpacks locations list into n different lists (objs)
-        # for chars in zip(*objs): # objs unpacked into n different characters
-            # char_zlevel = {}
-            # compare = []
-            # color = " "
-            # if all(" " in t for t in chars): # if all 3 chars are " " 
-                # print(" ", end="")
-                # continue
-            # for i in range(len(chars)):
-                # char_zlevel[chars[i]] = z_dict[argslist[i]]
-            # for i in chars:
-                # if i != " ":
-                    # compare.append(i)
-            # to_print=compare[0]
-            # for i in compare:
-                # if char_zlevel[i] > char_zlevel[to_print]:
-                    # to_print = i
-            # print(to_print, end="")
-        # print("\033[34A\033[2K", end="")
-        # time.sleep(0.5)
+        time.sleep(0.2)
                 
             
             
