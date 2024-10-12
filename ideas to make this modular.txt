@@ -56,5 +56,21 @@ I need to make a dictionary where the chars are connected to their respective z-
 Ok so I managed to implement zlevels properly and I can add as many spritesheets as I want.
 It looks hella nice ngl
 
-12:40 12/10/2024
+13:16 12/10/2024
 Code's starting to look like shit. I should consider if I can make use of classes here.
+
+14:27 12/10/2024
+Looks a bit better. 
+I encountered a problem, need to work on the scenario if two chars are the same and print the color accordingly
+### O:2 M:5 M:4
+OH SHIT now I get it, since I'm using the chars as keys, then I'm basically reassigning a new value to the given key.
+damn not good
+
+15:07 12/10/2024
+Fixed.
+
+15:18 12/10/2024
+Ok, time to handle what happens if a spritesheet has less files
+
+16:01 12/10/2024
+Done
