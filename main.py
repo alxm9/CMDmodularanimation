@@ -87,20 +87,13 @@ def run_animation(*args): #First arg should be edge/bg.
             for i in compare:
                 if i > to_print:
                     to_print = i
-            color = z_char_color[to_print][1]
-            print(color+z_char_color[to_print][0], end="")
+            print(z_char_color[to_print][1]+z_char_color[to_print][0], end="") # color + char
         print("\033[38A\033[2K", end="")
         time.sleep(0.05)
         
 def print_stillshot(framenumlist, *args): # [1,4], dude, backpillars
-    max_frame = max(args, key=attrgetter('frames')).frames 
-    sprite_dict = obj_frameslist_dict(args, max_frame) # {ss_obj: [frame1, frame2,..],...}
-    z_dict = {k:v for ss_obj in args for k,v in ss_obj.get_whatever("zlevel").items()} ## key:vvalue (output) for x in y (first loop) (for k,v..) (second loop)
-    color_dict = {k:v for ss_obj in args for k,v in ss_obj.get_whatever("color").items()}
-    list_framelists = [sprite_dict[i] for i in args]
+    pass
 
 clear()
 while True:
     run_animation(dude, frontpillars, backpillars, outline)
-
-
