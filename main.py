@@ -33,7 +33,7 @@ class spritesheet():
         return getattr(self, attr)
         
 # All txt frames should have the same amount of lines and same col at the end of a line. For now.
-###################### path, escape code color, z-level, frames
+##################### path, escape code color, z-level, frames
 outline = spritesheet("bg","\033[94m", zlevel = 22, frames = 1)
 circle = spritesheet("circle","\033[94m", zlevel = 6, frames = 5)
 square = spritesheet("square","\033[32m", zlevel = 4, frames = 5)
@@ -43,18 +43,6 @@ frontpillars = spritesheet("frontpillars","\033[31m", zlevel = 8, frames = 28)
 backpillars = spritesheet("backpillars","\033[31m", zlevel = 2, frames = 28)
 outline1 = spritesheet("outline1", "\033[94m", zlevel = 99, frames = 1)
 
-def obj_frameslist_dict(argstuple, max_frame):
-    sprite_dict = {}
-    for ss_obj in argstuple: ## ss_obj = spritesheet object
-        sprite_dict[ss_obj] = []
-        for frame in range(1,ss_obj.frames+1):
-            path = os.path.join("{0}".format(ss_obj.path), "txt", "ascii-art ({0}).txt".format(frame)) ## os.path.join works regardless of OS
-            file = open(path, "r", encoding="utf-8")
-            sprite_dict[ss_obj].append(file.read())
-        # print(max_frame, len(sprite_dict[ss_obj]))
-        if ss_obj.frames < max_frame: # extends frames by last frame
-            sprite_dict[ss_obj].extend([sprite_dict[ss_obj][-1]] * (max_frame - ss_obj.frames))
-    return sprite_dict
 
 def adjust_to_max(list_framelists, max_frame): # adjusts to max frame
     for list in list_framelists:
@@ -97,3 +85,17 @@ def print_stillshot(framenumlist, *args): # [1,4], dude, backpillars
 clear()
 while True:
     run_animation(dude, frontpillars, backpillars, outline)
+    
+    
+# def obj_frameslist_dict(argstuple, max_frame):
+    # sprite_dict = {}
+    # for ss_obj in argstuple: ## ss_obj = spritesheet object
+        # sprite_dict[ss_obj] = []
+        # for frame in range(1,ss_obj.frames+1):
+            # path = os.path.join("{0}".format(ss_obj.path), "txt", "ascii-art ({0}).txt".format(frame)) ## os.path.join works regardless of OS
+            # file = open(path, "r", encoding="utf-8")
+            # sprite_dict[ss_obj].append(file.read())
+        # print(max_frame, len(sprite_dict[ss_obj]))
+        # if ss_obj.frames < max_frame: # extends frames by last frame
+            # sprite_dict[ss_obj].extend([sprite_dict[ss_obj][-1]] * (max_frame - ss_obj.frames))
+    # return sprite_dict
