@@ -43,6 +43,14 @@ frontpillars = spritesheet("frontpillars","\033[31m", zlevel = 8, frames = 28)
 backpillars = spritesheet("backpillars","\033[31m", zlevel = 2, frames = 28)
 outline1 = spritesheet("outline1", "\033[94m", zlevel = 99, frames = 1)
 
+fire2 = spritesheet("fire2", "\033[31m", zlevel = 8, frames = 95)
+building1 = spritesheet("building1", "\033[37m", zlevel = 7, frames = 95)
+fire = spritesheet("fire", "\033[31m", zlevel = 6, frames = 95)
+heli = spritesheet("heli", "\033[97m", zlevel = 5, frames = 95)
+skyscraper = spritesheet("skyscraper", "\033[37m", zlevel = 4, frames = 95)
+fire3 = spritesheet("fire3", "\033[31m", zlevel = 3, frames = 95)
+citybg = spritesheet("citybg", "\033[37m", zlevel = 2, frames = 95)
+pulse = spritesheet("pulse", "\033[31m", zlevel = 1, frames = 95)
 
 def adjust_to_max(list_framelists, max_frame): # adjusts to max frame
     for list in list_framelists:
@@ -103,7 +111,7 @@ clear()
 
 while True:
     #### Runs animation
-    run_animation(backpillars,frontpillars,dude,circle,square,outline)
+    run_animation(fire,fire2,fire3,skyscraper,building1,heli,citybg,pulse)
     
 # def obj_frameslist_dict(argstuple, max_frame):
     # sprite_dict = {}
