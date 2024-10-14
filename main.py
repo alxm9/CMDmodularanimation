@@ -38,7 +38,7 @@ outline = spritesheet("bg","\033[94m", zlevel = 22, frames = 1)
 circle = spritesheet("circle","\033[94m", zlevel = 6, frames = 5)
 square = spritesheet("square","\033[32m", zlevel = 4, frames = 5)
 lightning = spritesheet("lightning","\033[32m", zlevel = 5, frames = 5)
-dude = spritesheet("dude", "\033[32m", zlevel= 3, frames = 28)
+dude = spritesheet("dude", "\033[32m", zlevel= 5, frames = 28)
 frontpillars = spritesheet("frontpillars","\033[31m", zlevel = 8, frames = 28)
 backpillars = spritesheet("backpillars","\033[31m", zlevel = 2, frames = 28)
 outline1 = spritesheet("outline1", "\033[94m", zlevel = 99, frames = 1)
@@ -59,33 +59,47 @@ def run_animation(*args): #First arg should be edge/bg.
     list_framelists = [i.frameslist for i in args]
     list_framelists = adjust_to_max(list_framelists, max_frame)
     for framelist in zip(*list_framelists): # * unpacks list_framelists into n different lists (objs)
-        for chars in zip(*framelist): # framelist unpacked into char number of different characters
-            z_char_color = {}
-            compare = []
-            if all(" " in t for t in chars): # if all 3 chars are " " 
-                print(" ", end="")
-                continue
-            for i in range(len(chars)): # zlevel: [char, color]
-                # z_char_color[z_dict[args[i]]] = [chars[i], color_dict[args[i]]] ### I walked in a circle. CATASTROPHICALLY BAD.
-                z_char_color[args[i].zlevel] = [chars[i], args[i].color]
-            for i in z_char_color:
-                if z_char_color[i][0] != " ":
-                    compare.append(i)
-            to_print=compare[0]
-            for i in compare:
-                if i > to_print:
-                    to_print = i
-            print(z_char_color[to_print][1]+z_char_color[to_print][0], end="") # color + char
+        print_frame(framelist, args)
         print("\033[38A\033[2K", end="")
         time.sleep(0.05)
         
 def print_stillshot(framenumlist, *args): # [1,4], dude, backpillars
-    pass
+    max_frame = max(args, key=attrgetter('frames')).frames
+    list_framelists = [i.frameslist for i in args]
+    list_framelists = adjust_to_max(list_framelists, max_frame)
+    frames_to_print = []
+    for i in range(len(args)):
+        frames_to_print.append(list_framelists[i][framenumlist[0]])
+        del framenumlist[0]
+    # for d in framesnumlist:
+        # for i in range(len(args)):
+            # frames_to_print.append(list_framelists[i][d])
+    for framelist in zip(*frames_to_print): # * unpacks list_framelists into n different lists (objs)
+        print_frame(framelist, args)
 
+def print_frame(framelist, args):
+    for chars in zip(*framelist): # framelist unpacked into char number of different characters
+        z_char_color = {}
+        compare = []
+        if all(" " in t for t in chars): # if all 3 chars are " " 
+            print(" ", end="")
+            continue
+        for i in range(len(chars)): # zlevel: [char, color]
+            # z_char_color[z_dict[args[i]]] = [chars[i], color_dict[args[i]]] ### I walked in a circle. CATASTROPHICALLY BAD.
+            z_char_color[args[i].zlevel] = [chars[i], args[i].color]
+        for i in z_char_color:
+            if z_char_color[i][0] != " ":
+                compare.append(i)
+        to_print=compare[0]
+        for i in compare:
+            if i > to_print:
+                to_print = i
+        print(z_char_color[to_print][1]+z_char_color[to_print][0], end="") # color + char
+        
 clear()
+# print_stillshot([22,3,10], dude, backpillars, frontpillars)
 while True:
-    run_animation(dude, frontpillars, backpillars, outline)
-    
+    run_animation(backpillars,frontpillars,dude,circle,square,outline)
     
 # def obj_frameslist_dict(argstuple, max_frame):
     # sprite_dict = {}
