@@ -102,7 +102,6 @@ clear()
 # print_stillshot([22,3,10], dude, backpillars, frontpillars)
 
 while True:
-    #### Runs animation
     run_animation(backpillars,frontpillars,dude,circle,square,outline)
     
 # def obj_frameslist_dict(argstuple, max_frame):
