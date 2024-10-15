@@ -54,7 +54,7 @@ citybg = spritesheet("citybg", "\033[37m", zlevel = 2, frames = 95)
 pulse = spritesheet("pulse", "\033[31m", zlevel = 1, frames = 95)
 climbers = spritesheet("climbers", "\033[32m", zlevel = 10, frames = 95)
 dudeontop = spritesheet("dudeontop", "\033[94m", zlevel = 11, frames = 95)
-moon = spritesheet("moon", "\033[31m", zlevel = 0.5, frames = 1)
+moon = spritesheet("moon", "\033[31m", zlevel = 0.5, frames = 95)
 
 def adjust_to_max(list_framelists, max_frame): # adjusts to max frame
     for list in list_framelists:
