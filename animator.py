@@ -31,11 +31,12 @@ def run_animation_curses(win, *args):
     # for i in args:
         # if i.nonstandard != 0:
     list_framelists = adjust_to_max(list_framelists, max_frame)
-    for framelist in zip(*list_framelists): # * unpacks list_framelists into n different lists (objs)
-        print_frame_curses(framelist,win,args)
-        win.move(0,0)
-        win.refresh()
-        time.sleep(0.05)
+    while (True):
+        for framelist in zip(*list_framelists): # * unpacks list_framelists into n different lists (objs)
+            print_frame_curses(framelist,win,args)
+            win.move(0,0)
+            win.refresh()
+            time.sleep(0.05)
         
 def print_stillshot_curses(framenumlist,win, *args): # [1,4], dude, backpillars
     max_frame = max(args, key=attrgetter('frames')).frames
@@ -75,8 +76,8 @@ def main(stdscr): ### TESTING PURPOSES ## Uncomment whichever path you need in t
     # curses.start_color()
     curses_setcolors() # imported from ani_sprites.py
     # print(cutscene_1_1, "WORKING")
-    # run_animation_curses(display_win,*cutscene_1_1)
-    fight = initiate_combat(display_win,("zombie", 2), ("zombie", 1), ("zombie", 1))
+    run_animation_curses(display_win,*test_scene)
+    # fight = initiate_combat(display_win,("zombie", 2), ("zombie", 1), ("zombie", 1))
     # print(fight.draw_on_window(), "NOT WORKING")
     # print_stillshot_curses([0,0,0], display_win, *fight.draw_on_window())
     # print_stillshot_curses([0,0], display_win, fight.creatures_dict["Enemy_1"].spritesheet, fight.creatures_dict["Enemy_2"].spritesheet)

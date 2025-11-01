@@ -128,4 +128,13 @@ red_elements_1 = spritesheet(("cutscene_1", "red"), 8, zlevel = 15, frames = 58)
 red_elements_2 = spritesheet(("cutscene_1", "red2"), 8, zlevel = 4, frames = 1)
 cutscene_1 = (outline,zombie_1, red_elements_1, general_bg, body_1, red_elements_2)
 
+#### TestScene
+backpillars = spritesheet(("test", "backpillars"), 5, zlevel = 1, frames = 27)
+dude = spritesheet(("test", "dude"), 8, zlevel = 2, frames = 27)
+frontpillars = spritesheet(("test", "frontpillars"), 5, zlevel = 3, frames = 27)
+
+
 cutscene_1_1 = (outline,zombie_1, red_elements_1, general_bg, body_1, red_elements_2, randomobj)
+
+
+test_scene = (outline, backpillars, dude, frontpillars)
